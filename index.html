@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<link href="css/bootstrap.min.css" rel="stylesheet"></link>
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center">
+<h1>REGISTRATION FORM</h1>
+</div>
+<div class="text-primary" >
+<marquee><h3>PLEASE FILL ALL INFORMATION.</h3></marquee>
+
+</div><br>
+<div class="row">
+		<div class="col-sm-12">
+		<?php  require_once 'taskcon.php';?>
+			<div  class="text-center" >
+			
+				<form action="taskcon.php" method="POST" id="reg" name="register" onsubmit="return validation()" class="bg-light">
+				
+				<div class="form-group">
+					<label class="text-primary">CHILDREN ID :</label><br>
+						<input type="text" name="c_id" id="c_id" placeholder="enter id" autofocus required><br>
+						<span id="child" class="text-danger font-weight-bold"></span>
+						<br>
+				</div>
+				
+				<div class="form-group">
+
+					<label class="text-primary">SEX :</label><br>
+						
+						<input type="radio" id="boy" name="gender" value="boy">
+						<label for="boy">BOY</label><br>
+						<input type="radio" id="girl" name="gender" value="girl">
+						<label for="girl">GIRL</label>
+						
+						<span id="c_sex" class="text-danger font-weight-bold"></span><br>
+				</div>
+				
+				<div class="form-group">
+						
+					<label class="text-primary">AGE :</label><br>
+						<input type="number" name="age" id="age" placeholder="enter age" min="1"required><br>
+						<span id="c_age" class="text-danger font-weight-bold"></span>
+						<br>
+						
+				</div>
+				
+				<div class="form-group">
+					<label class="text-primary">STATUS</label> :</label><br>
+						<select id="status" name="status" autofocus>
+							<option value="active">ACTIVE</option>
+							<option value="inactive">INACTIVE</option>
+						
+						</select>
+						<span id="c_status" class="text-danger font-weight-bold"></span>
+						<br><br>
+				</div>
+				
+				<div class="form-group">
+					<label class="text-primary">DATE OF BIRTH :</label><br>
+						<input type="date" name="dob" id="dob" placeholder="enter date of birth" min="2008-01-01"required><br>
+						<span id="c_dob" class="text-danger font-weight-bold" ></span>
+						<br>
+						
+				</div>
+				
+				<div class="form-group">
+					<label class="text-primary">HEIGHT:</label><br>
+						<input type="text" name="height" id="height" placeholder="enter height"  required><br>
+						<span id="c_height" class="text-danger font-weight-bold"></span>
+						<br>
+				</div>
+				
+				<div class="form-group">
+					<label class="text-primary">WEIGHT :</label><br>
+						<input type="text" name="weight" id="weight" placeholder="enter weight"required ><br>
+						<span id="c_weight" class="text-danger font-weight-bold"></span>
+						<br>
+						
+				</div>
+						
+					<input type="submit" value="submit" class="btn btn-outline-info"  >
+					<input type="reset"value="reset" class="btn btn-outline-secondary">
+				</form>
+			</div>
+		</div>
+</div>
+<script type="text/javascript" >
+
+function validation()
+{
+	var c_id=document.forms["register"]["c_id"].value;
+	var gender=document.forms["register"]["gender"].value;
+	var age=document.forms["register"]["age"].value;
+	var status=document.forms["register"]["status"].value;
+	var dob=document.forms["register"]["dob"].value;
+	var height=document.forms["register"]["height"].value;
+	var weight=document.forms["register"]["weight"].value;
+	
+	 
+	
+	if(c_id=="")
+	{
+		document.getElementById('child').innerHTML="please fill this first";
+		return false;
+	}
+	else
+	{
+		if(isNaN(c_id))
+		{
+			document.getElementById('child').innerHTML="please enter number";
+			return false;
+		
+		}
+	
+	}
+	
+	if(gender=="")
+	{
+		document.getElementById('sex').innerHTML="please fill this correctally";
+		return false;
+	}
+	if(age=="")
+	{
+		document.getElementById('c_age').innerHTML="please enter correct information";
+		return false;
+	}
+	else
+	{
+			if(isNaN(age))
+			{
+				document.getElementById('child').innerHTML="please enter number";
+				return false;
+			
+			}
+			else
+			{
+					if(age<=0)
+				{
+					document.getElementById('c_age'.innerHTML="age is grearter then 0")
+					return false;
+				}
+			
+			}
+	}
+	
+	if(status=="")
+	{
+		document.getElementById('c_status').innerHTML="please fill this correctally";
+		return false;
+	}
+	if(dob=="")
+	{
+		document.getElementById('c_dob').innerHTML="please fill this ";
+		return false;
+	}
+	if(height=="")
+	{
+		document.getElementById('c_height').innerHTML="fill this box";
+		return false;
+	}
+	else
+	{
+	
+		if(isNaN(height))
+		{
+			document.getElementById('c_height').innerHTML="hieght enter number ";
+			return false;
+		}
+		else
+		{
+			if(height<=0)
+			{
+				document.getElementById('c_height').innerHTML="hieght is graeter than 0 ";
+				return false;
+			}
+		}
+	}
+	
+	
+
+	if(weight=="" )
+	{
+		document.getElementById('c_weight').innerHTML="fill this box";
+		return false;
+	}
+	else
+	{
+		if(isNaN(weight))
+		{
+			document.getElementById('c_weight').innerHTML="hieght enter number ";
+			return false;
+		}
+		else
+		{
+		
+				if(weight<=0)
+				{
+					document.getElementById('c_weight').innerHTML="fill this box 0";
+					return false;
+				}
+		}
+	
+	}
+	
+	
+	
+	
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
